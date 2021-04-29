@@ -1,11 +1,11 @@
 <?php
-
-function getTimeSlot($data){
+getTimeSlot();
+function getTimeSlot(){
 
   $curl = curl_init();
   
   curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://marketingapi.rentcafe.com/marketingapi/api/appointments/AvailableSlots?MarketingAPIKey='.APIKey.'&CompanyCode=c00000110537&PropertyId='.$data->propertyID,
+    CURLOPT_URL => 'https://marketingapi.rentcafe.com/marketingapi/api/appointments/AvailableSlots?MarketingAPIKey=1a7f8d8f-38bc-4d02-a2a3-03ae87c69688&CompanyCode=c00000110537&PropertyId=978674',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -29,12 +29,11 @@ function getTimeSlot($data){
   $response = json_decode($resp);
 
   if($responseCode == 200 || $responseCode == 204){
-      return ["status"=>true,"response"=>$response,"request"=>__FUNCTION__];
+    return ["status"=>true,"response"=>$response,"request"=>__FUNCTION__];
   }else{
       return ["status"=>false,"response"=>$response->message,"request"=>__FUNCTION__];
   }
 
 }
-
 
 ?>
