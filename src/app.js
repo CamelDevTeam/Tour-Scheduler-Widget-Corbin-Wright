@@ -23,14 +23,12 @@ let retrieveSlots = doAjax({
     type: 'POST',
     data: {
         "action":"Get Time Slot",
-        "name":"Trek",
-        "propertyID":"978674"
+        "propertyID":"978674",
     }
 });
 
 retrieveSlots.then(function(data){
-    let resp = JSON.parse(data);
-
+    
     if(resp.response.ErrorCode == 0){
         console.log(resp.response);
     }

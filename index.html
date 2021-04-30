@@ -6,8 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="src/app.js"></script>
 </head>
 <body>
-    <script src="src/app.js"></script>
+    <div class="ts-main-container">
+        <div class="ts-colsWrapper">
+            <div class="ts-column ts-datepicker-container">
+                <div id="datepicker"></div>
+            </div>
+            <div class="ts-column">
+                <div class="ts-content-container">
+                    <h3>Available Time:</h3>
+                    <div class="ts-availableTime-container">
+                        <div class="ts-time-container">8:30 pm</div>
+                        <div class="ts-time-container">9:00 pm</div>
+                        <div class="ts-time-container">9:30 pm</div>
+                        <div class="ts-time-container">10:00 pm</div>
+                        <div class="ts-time-container">10:30 pm</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+    $("#datepicker").datepicker();
+    $("#datepicker").datepicker("option", "minDate", "0");
+    var currentDate = $( ".selector" ).datepicker( "getDate" );
+    $("#datepicker").on("change",function(){
+        var selected = $(this).val();
+        alert(selected);
+    });
+});
+    </script>
 </body>
 </html>

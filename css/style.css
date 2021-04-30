@@ -1,0 +1,108 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+.ts-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ts-colsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: rgb(45 62 80 / 12%) 0px 0px 10px 1px;
+}
+.ts-column {
+    width: 50%;
+    flex: 1;
+    padding: 30px 15px;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    top: unset;
+}
+.ts-datepicker-container {
+    background-color: #2E4259;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.ts-content-container {
+    padding: 0 15px;
+}
+.ts-column h3 {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    font-weight: 700;
+    color: #2E4259;
+    margin: 0 0 20px 0;
+}
+.ts-time-container {
+    font-family: 'Montserrat';
+    padding: 12px 24px;
+    max-width: 100%;
+    background-color: rgba(46, 66, 89, 0.05);
+    color: #2E4259;
+    border: 1px solid rgba(46, 66, 89, 0.3);
+    margin: 7.5px 7.5px 7.5px 0;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.ts-time-container:hover {
+    background-color: rgba(46, 66, 89, 1);
+    color: #33EDC0;
+}
+
+/* DATE PICKER */
+.ui-widget.ui-widget-content {
+    width: 100%;
+}
+.ui-widget.ui-widget-content {
+    border: none;
+}
+.ui-widget-content {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+}
+.ui-datepicker table {
+    margin-top: 30px;
+}
+.ui-widget-header {
+    border: none;
+    background: #33EDC0;
+    color: #2E4259;
+}
+.ui-datepicker th {
+    text-transform: uppercase;
+}
+.ui-datepicker td .ui-state-default {
+    width: auto;
+    height: auto;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    text-align: center;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    border: none;
+    background-color: #33EDC0;
+    color: #2E4259;
+    border-radius: 10px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default:hover {
+    background-color: rgba(51,237,192,0.5);
+    color: #ffffff;
+    border-radius: 10px;
+}
