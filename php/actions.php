@@ -15,7 +15,11 @@ switch ($data->action) {
         $timeslots = getTimeSlot($data);
         printResponse($timeslots);
         break;
-        
+    case 'Book Appointment':
+        //Book Appointment
+        $bookappointment = bookAppointment($data);
+        printResponse($bookappointment);
+        break;
     default:
         # code...
         break;
