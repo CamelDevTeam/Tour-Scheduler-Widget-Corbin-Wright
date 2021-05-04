@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Tour Scheduler</title>   
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/tour-scheduler.css">
     <script src="src/app.js"></script>
 </head>
 <body>
@@ -42,5 +42,71 @@
             </div>
         </div>
     </div>
+
+    <!-- FORM -->
+    <div class="ts-form-container">
+        <form action="">
+            <div class="ts-close-icon">X</div>
+            <input type="text" name="MarketingAPIKey" id="MarketingAPIKey" value="1a7f8d8f-38bc-4d02-a2a3-03ae87c69688" hidden>
+            <input type="text" name="CompanyCode" id="CompanyCode" value="c00000110537" hidden>
+            <input type="text" name="PropertyId" id="PropertyId" value="978674" hidden>
+
+            <div class="ts-input-container ts-col-1">
+                <h3>Contact Form</h3>
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <!-- <label for="ApptDate">First Name:</label> -->
+                <input type="text" name="FirstName" id="FirstName" value="" placeholder="First Name">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <!-- <label for="ApptDate">Last Name:</label> -->
+                <input type="text" name="LastName" id="LastName" value="" placeholder="Last Name">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <!-- <label for="ApptDate">Email Address:</label> -->
+                <input type="email" name="Email" id="Email" value="" placeholder="Email Address">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <!-- <label for="ApptDate">Phone Number:</label> -->
+                <input type="tel" name="Phone" id="Phone" value="" placeholder="Phone Number">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <label for="ApptDate">Appointment Date:</label>
+                <input type="date" name="ApptDate" id="ApptDate" disabled>
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <label for="ApptTime">Appointment Time:</label>
+                <input type="time" name="ApptTime" id="ApptTime" disabled>
+            </div>
+            <div class="ts-input-container ts-col-1">
+                <!-- <label for="ApptDate">Source:</label> -->
+                <input type="text" name="Source" id="Source" value="" placeholder="Source">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <label for="ApptDate">Desired Move-In Date:</label>
+                <input type="date" name="DesiredMoveinDate" id="DesiredMoveinDate" value="">
+            </div>
+            <div class="ts-input-container ts-col-2">
+                <label for="ApptDate">Desired Bedrooms:</label>
+                <input type="number" name="DesiredBedrooms" id="DesiredBedrooms" value="1" placeholder="">
+            </div>
+            <div class="ts-input-container ts-col-1">
+                <!-- <label for="ApptDate">Message:</label> -->
+                <textarea name="Message" id="Message" placeholder="Message"></textarea>
+            </div>
+            <div class="ts-input-container ts-submit ts-col-1">
+                <button class="ts-form-submit" id="ts-form-submit">
+                    <span>Submit</span>
+                </button>
+            </div>
+
+
+            <input type="text" name="RCCampaignId" id="RCCampaignId" value="12301" hidden>
+            <input type="text" name="RCCampaignType" id="RCCampaignType" value="StandardCampaign" hidden>
+            <input type="text" name="CTUserVisitId" id="CTUserVisitId" value="3DIT8NXO7S0SRIPQ2EYCBI1719179193" hidden>
+            <input type="text" name="TouchPoint" id="TouchPoint" value="Appointment" hidden>
+        </form>
+    </div>
+    <!-- END FORM -->
 </body>
 </html>

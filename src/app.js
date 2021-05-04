@@ -13,24 +13,30 @@ $(function() {
             console.log(data)
         })
     */
-     function doAjax(settings) {
-         settings.data = JSON.stringify(settings.data);
-         return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
-     }
+    // function doAjax(settings) {
+    //     settings.data = JSON.stringify(settings.data);
+    //     return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
+    // }
 
     $("#datepicker").datepicker();
     $("#datepicker").datepicker("option", "minDate", "0");
 
-    //Get Selected Date
+    //Get Selected Date On Load
     let selectedDate = $("#datepicker").val().replace(/\b0/g, '');
-    getSlots(selectedDate);
+    getData(selectedDate);
 
     $("#datepicker").on("change",function() {
+        //Get Selected Date On Change
         selectedDate = $("#datepicker").val().replace(/\b0/g, '');
-        getSlots(selectedDate);
+        getData(selectedDate);
     });
 
-    function getSlots(selectedDate) {
+    function getData(selectedDate) {
+
+        function doAjax(settings) {
+            settings.data = JSON.stringify(settings.data);
+            return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
+        }
         
         let retrieveSlots = doAjax({
             url: actionURL,
@@ -60,8 +66,9 @@ $(function() {
                         let arrayDateTime = data.dtStart.split(" ");
 
                         if(selectedDate == arrayDateTime[0]) {
+                            let arrTime = arrayDateTime[1].split(":").map(e => e.padStart(2, 0)).slice(0,-1).join(':');
                             let output = `
-                                <div class="ts-time-container">${arrayDateTime[1]} ${arrayDateTime[2]}</div>
+                                <div class="ts-time-container ts-show-form" data-date="${arrayDateTime[0]}">${arrTime} ${arrayDateTime[2].toLowerCase()}</div>
                             `;
                             $(".ts-availableTime-container").append(output);
                         }
@@ -74,6 +81,38 @@ $(function() {
                     `;
                     $(".ts-availableTime-container").append(output);
                 }
+
+                $(".ts-time-container.ts-show-form").click(function() {
+                    $(".ts-form-container").css("display","block");
+                    $(".ts-main-container").css("display","none");
+
+                    //CHANGE SEPARATOR FROM / to - THEN ADD 0 AT THE BEGINNING OF EVERY SINGLE DIGIT
+                    let dataDate = $(this).attr("data-date").split("/").map(e => e.padStart(2, 0)).join('-');
+                    //SEPERATE TIME AND AM/PM
+                    let dataTime = $(this).text().split(" ").map(e => e);
+                    //SEPERATE HOURS & MINS
+                    let arrTime = dataTime[0].split(":");
+                    let militaryTime; 
+
+                    //CONVERTING TO 24HRS FORMAT
+                    if(dataTime[1] == "pm") {
+                        if(arrTime[0] < 12) {
+                            militaryTime = `${parseInt(arrTime[0])+12}:${arrTime[1]}`; 
+                        }else {
+                            militaryTime = dataTime[0];
+                        }
+                    }else {
+                        militaryTime = dataTime[0]; 
+                    }
+                    
+                    $("#ApptDate").val([dataDate.slice(-4), dataDate.slice(0,5)].join('-'));
+                    $("#ApptTime").val(militaryTime);
+                });
+
+                $(".ts-form-container .ts-close-icon").click(function() {
+                    $(".ts-main-container").css("display","block");
+                    $(".ts-form-container").css("display","none");
+                });
             }
             if(resp.response.ErrorCode > 0){
                 console.log("Error");
@@ -85,8 +124,8 @@ $(function() {
         let availableDate = [];
 
         obj.map(function(data){
-            let arrTime = data.dtStart.split(" ");
-            availableDate.push(arrTime[0]);
+            let arrDateTime = data.dtStart.split(" ");
+            availableDate.push(arrDateTime[0]);
         }); 
 
         return availableDate.includes(selectedDate) ? true:false;

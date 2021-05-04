@@ -152,6 +152,120 @@
 	}
 }
 
+/* FORM */
+.ts-form-container {
+    position: relative;
+    display: none;
+}
+.ts-form-container form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #2E4259;
+    border-radius: 5px;
+    box-shadow: rgb(45 62 80 / 12%) 0px 0px 10px 1px;
+}
+.ts-close-icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 30px;
+    right: 30px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
+    color: #2E4259;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #33EDC0;
+    z-index: 999;
+}
+.ts-input-container {
+    padding: 15px 10px;
+}
+.ts-input-container h3 {
+    font-family: 'Montserrat';
+    font-size: 40px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+}
+.ts-input-container label {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: normal;
+    color: #ffffff;
+}
+.ts-input-container input {
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    margin-top: 8px;
+    color: #ffffff;
+    background-color: #243446;
+    border: none;
+}
+.ts-input-container input::placeholder, .ts-input-container textarea::placeholder {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.9);
+}
+.ts-input-container input[type="date"], .ts-input-container input[type="time"] {
+    text-transform: uppercase;
+}
+.ts-input-container input[type="date"]::-webkit-calendar-picker-indicator, .ts-input-container input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(1);
+  }
+.ts-input-container textarea {
+    width: 100%;
+    height: 90px;
+    margin-top: 5px;
+    padding: 15px 10px;
+    background-color: #243446;
+    border: none;
+    color: #ffffff;
+}
+.ts-input-container.ts-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ts-form-submit {
+    width: 180px;
+    height: 50px;
+    font-family: "Montserrat";
+    font-weight: normal;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #33EDC0;
+    border: none;
+    border-radius: 3px;
+}
+.ts-form-submit:hover {
+    background-color: #ffffff;
+}
+.ts-col-3 {
+    width: 33.33%;
+}
+.ts-col-2 {
+    width: 50%;
+}
+.ts-col-1 {
+    width: 100%;
+}
+
 /* DATE PICKER */
 .ui-widget.ui-widget-content {
     width: 100%;
