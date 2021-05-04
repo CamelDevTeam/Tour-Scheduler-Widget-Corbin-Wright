@@ -13,29 +13,24 @@ $(function() {
             console.log(data)
         })
     */
-    // function doAjax(settings) {
-    //     settings.data = JSON.stringify(settings.data);
-    //     return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
-    // }
+     function doAjax(settings) {
+         settings.data = JSON.stringify(settings.data);
+         return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
+     }
 
     $("#datepicker").datepicker();
     $("#datepicker").datepicker("option", "minDate", "0");
 
     //Get Selected Date
     let selectedDate = $("#datepicker").val().replace(/\b0/g, '');
-    getData(selectedDate);
+    getSlots(selectedDate);
 
     $("#datepicker").on("change",function() {
         selectedDate = $("#datepicker").val().replace(/\b0/g, '');
-        getData(selectedDate);
+        getSlots(selectedDate);
     });
 
-    function getData(selectedDate) {
-
-        function doAjax(settings) {
-            settings.data = JSON.stringify(settings.data);
-            return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
-        }
+    function getSlots(selectedDate) {
         
         let retrieveSlots = doAjax({
             url: actionURL,
