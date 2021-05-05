@@ -13,10 +13,10 @@ $(function() {
             console.log(data)
         })
     */
-    // function doAjax(settings) {
-    //     settings.data = JSON.stringify(settings.data);
-    //     return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
-    // }
+     function doAjax(settings) {
+         settings.data = JSON.stringify(settings.data);
+        return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
+     }
 
     $("#datepicker").datepicker();
     $("#datepicker").datepicker("option", "minDate", "0");
@@ -33,11 +33,6 @@ $(function() {
 
     function getData(selectedDate) {
 
-        function doAjax(settings) {
-            settings.data = JSON.stringify(settings.data);
-            return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
-        }
-        
         let retrieveSlots = doAjax({
             url: actionURL,
             type: 'POST',
@@ -129,5 +124,52 @@ $(function() {
         }); 
 
         return availableDate.includes(selectedDate) ? true:false;
+    }
+    
+    $("#ts-form-submit").click(function() {
+        bookAppointment();
+    });
+
+    function bookAppointment() {
+        
+        let bookAppointment = doAjax({
+            url: actionURL,
+            type: 'POST',
+            data: {
+                "action":"Book Appointment",
+                "propertyID":"978674",
+                "CompanyCode":"c00000110537",
+                "FirstName":"First Name Test",
+                "LastName":"Last Name Test",
+                "Email":"test@test.com",
+                "Phone":"1234567896",
+                "ApptDate":"05/06/2021",
+                "ApptTime":"04:00PM",
+                "Source":"Website",
+                "DesiredMoveinDate":"05/06/2021",
+                "DesiredBedrooms":"1",
+                "Message":"needparking",
+                "RCCampaignId":"12301",
+                "RCCampaignType":"StandardCampaign",
+                "CTUserVisitId":"3DIT8NXO7S0SRIPQ2EYCBI1719179193",
+                "To%20u%20c%20h%20Po%20i%20n%20t":"Appointment"
+            },
+            beforeSend: function() {
+                console.log('loading');   
+            }
+        });
+    
+        bookAppointment.then(function(data){
+            console.log('complete');
+            let resp = JSON.parse(data);
+    
+            if(resp.response.ErrorCode == 0){
+                console.log('Sent')
+            }
+                
+            if(resp.response.ErrorCode > 0){
+                console.log("Error");
+            }
+        });
     }
 });
