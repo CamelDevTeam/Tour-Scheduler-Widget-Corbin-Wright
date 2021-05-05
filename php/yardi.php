@@ -49,6 +49,7 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'',
   CURLOPT_HTTPHEADER => array(
     'Cookie: __cfduid=da340dc9bab4869c32a0524b6f537ec671620129142'
   ),
@@ -71,7 +72,7 @@ echo $response;
   if($responseCode == 200 || $responseCode == 204){
       return ["status"=>true,"response"=>$response,"request"=>__FUNCTION__];
   }else{
-      return ["status"=>false,"response"=>$response->message,"request"=>__FUNCTION__];
+      return ["status"=>false,"response"=>$response->ErrorMessage,"request"=>__FUNCTION__];
   }
 
 }
