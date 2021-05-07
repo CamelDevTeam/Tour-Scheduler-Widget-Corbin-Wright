@@ -52,7 +52,7 @@ $(function() {
         retrieveSlots.then(function(data) {
             $(".ts-preload-container").css("display","none");
             let resp = JSON.parse(data);
-
+            
             if(resp.response.ErrorCode == 0){
                 console.log("complete");
                 let availableTime = resp.response.Response[0].AvailableSlots;
@@ -195,16 +195,13 @@ $(function() {
         sendSchedule.then(function(data) {
             console.log('complete submit');
             let resp = JSON.parse(data);
-
-            if(resp.status){
-                //true
-                console.log(resp.response);
-                if(resp.response == "") {
-                    console.log("Tour Schedule Successfully!");
-                }
-            }else {
-                //false
-                console.log(resp.response);
+            console.log(resp);
+            
+            if(resp.response.ErrorCode == 0){
+                console.log("Tour Schedule Successfully!");
+            }
+            if(resp.response.ErrorCode > 0){
+                console.log(resp.response.ErrorMessage);
             }
         });
     }

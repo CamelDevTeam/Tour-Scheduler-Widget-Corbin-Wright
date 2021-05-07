@@ -28,7 +28,7 @@ function getTimeSlot($data){
 
   $response = json_decode($resp);
 
-  if($responseCode == 200 || $responseCode == 204){
+  if($response->ErrorCode == 0){
       return ["status"=>true,"response"=>$response,"request"=>__FUNCTION__];
   }else{
       return ["status"=>false,"response"=>$response->ErrorMessage,"request"=>__FUNCTION__];
