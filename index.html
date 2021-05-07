@@ -45,7 +45,7 @@
 
     <!-- FORM -->
     <div class="ts-form-container">
-        <form action="">
+        <form class="ts-form">
             <div class="ts-close-icon">X</div>
             <input type="text" name="MarketingAPIKey" id="MarketingAPIKey" value="1a7f8d8f-38bc-4d02-a2a3-03ae87c69688" hidden>
             <input type="text" name="CompanyCode" id="CompanyCode" value="c00000110537" hidden>
@@ -56,48 +56,46 @@
             </div>
             <div class="ts-input-container ts-col-2">
                 <!-- <label for="ApptDate">First Name:</label> -->
-                <input type="text" name="FirstName" id="FirstName" value="" placeholder="First Name">
+                <input type="text" name="FirstName" id="FirstName" value="" placeholder="First Name" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <!-- <label for="ApptDate">Last Name:</label> -->
-                <input type="text" name="LastName" id="LastName" value="" placeholder="Last Name">
+                <input type="text" name="LastName" id="LastName" value="" placeholder="Last Name" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <!-- <label for="ApptDate">Email Address:</label> -->
-                <input type="email" name="Email" id="Email" value="" placeholder="Email Address">
+                <input type="email" name="Email" id="Email" value="" placeholder="Email Address" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <!-- <label for="ApptDate">Phone Number:</label> -->
-                <input type="tel" name="Phone" id="Phone" value="" placeholder="Phone Number">
+                <input type="tel" name="Phone" id="Phone" value="" placeholder="Phone Number" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <label for="ApptDate">Appointment Date:</label>
-                <input type="date" name="ApptDate" id="ApptDate" disabled>
+                <input type="text" name="ApptDate" id="ApptDate" disabled required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <label for="ApptTime">Appointment Time:</label>
-                <input type="time" name="ApptTime" id="ApptTime" disabled>
+                <input type="text" name="ApptTime" id="ApptTime" disabled required>
             </div>
             <div class="ts-input-container ts-col-1">
                 <!-- <label for="ApptDate">Source:</label> -->
-                <input type="text" name="Source" id="Source" value="" placeholder="Source">
+                <input type="text" name="Source" id="Source" value="" placeholder="Source" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <label for="ApptDate">Desired Move-In Date:</label>
-                <input type="date" name="DesiredMoveinDate" id="DesiredMoveinDate" value="">
+                <input type="date" name="DesiredMoveinDate" id="DesiredMoveinDate" value="" required>
             </div>
             <div class="ts-input-container ts-col-2">
                 <label for="ApptDate">Desired Bedrooms:</label>
-                <input type="number" name="DesiredBedrooms" id="DesiredBedrooms" value="1" placeholder="">
+                <input type="number" name="DesiredBedrooms" id="DesiredBedrooms" value="1" placeholder="" required>
             </div>
             <div class="ts-input-container ts-col-1">
                 <!-- <label for="ApptDate">Message:</label> -->
                 <textarea name="Message" id="Message" placeholder="Message"></textarea>
             </div>
             <div class="ts-input-container ts-submit ts-col-1">
-                <button class="ts-form-submit" id="ts-form-submit">
-                    <span>Submit</span>
-                </button>
+                <input type="button" id="ts-form-submit" class="ts-form-submit" value="Submit">
             </div>
 
 

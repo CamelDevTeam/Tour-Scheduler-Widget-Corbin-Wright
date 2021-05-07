@@ -15,7 +15,9 @@ $(function() {
     */
 
     $("#datepicker").datepicker();
+    //DISABLE PAST DATES
     $("#datepicker").datepicker("option", "minDate", "0");
+    $("#DesiredMoveinDate").attr("min",`${new Date().toISOString().split('T')[0]}`);
 
     //Get Selected Date On Load
     let selectedDate = $("#datepicker").val().replace(/\b0/g, '');
@@ -52,12 +54,12 @@ $(function() {
             let resp = JSON.parse(data);
 
             if(resp.response.ErrorCode == 0){
-                console.log('complete');
+                console.log("complete");
                 let availableTime = resp.response.Response[0].AvailableSlots;
                 createDOM(availableTime);
             }
             if(resp.response.ErrorCode > 0){
-                console.log("Error");
+                console.log(resp.response.ErrorMessage);
             }
         });
     }
@@ -72,8 +74,9 @@ $(function() {
 
                 if(selectedDate == arrayDateTime[0]) {
                     let arrTime = arrayDateTime[1].split(":").map(e => e.padStart(2, 0)).slice(0,-1).join(':');
+                    let datePick = arrayDateTime[0].split("/").map(e => e.padStart(2, 0)).join('/');
                     let output = `
-                        <div class="ts-time-container ts-show-form" data-date="${arrayDateTime[0]}">${arrTime} ${arrayDateTime[2].toLowerCase()}</div>
+                        <div class="ts-time-container ts-show-form" data-date="${datePick}">${arrTime} ${arrayDateTime[2].toUpperCase()}</div>
                     `;
                     $(".ts-availableTime-container").append(output);
                 }
@@ -91,17 +94,18 @@ $(function() {
             $(".ts-form-container").css("display","block");
             $(".ts-main-container").css("display","none");
 
-            //CHANGE SEPARATOR FROM / to - THEN ADD 0 AT THE BEGINNING OF EVERY SINGLE DIGIT
-            let dataDate = $(this).attr("data-date").split("/").map(e => e.padStart(2, 0)).join('-');
+            //ADD 0 AT THE BEGINNING OF EVERY SINGLE DIGIT
+            let dataDate = $(this).attr("data-date").split("/").map(e => e.padStart(2, 0)).join('/');
             //SEPERATE TIME AND AM/PM
             let dataTime = $(this).text().split(" ").map(e => e);
             //SEPERATE HOURS & MINS
-            let arrTime = dataTime[0].split(":");
-            let militaryTime = convertToMilitaryTime(arrTime, dataTime);  
+            // let arrTime = dataTime[0].split(":");
+            // let militaryTime = convertToMilitaryTime(arrTime, dataTime);  
             
             //SET DATE AND TIME TO FORM FIELD
-            $("#ApptDate").val([dataDate.slice(-4), dataDate.slice(0,5)].join('-'));
-            $("#ApptTime").val(militaryTime);
+            // $("#ApptDate").val([dataDate.slice(-4), dataDate.slice(0,5)].join('-'));
+            $("#ApptDate").val(dataDate);
+            $("#ApptTime").val(`${dataTime[0]}${dataTime[1]}`);
         });
 
         $(".ts-form-container .ts-close-icon").click(function() {
@@ -123,17 +127,17 @@ $(function() {
     }
 
     //CONVERTING TO 24HRS FORMAT
-    function convertToMilitaryTime(arrTime, dataTime) {
-        if(dataTime[1] == "pm") {
-            if(arrTime[0] < 12) {
-                return `${parseInt(arrTime[0])+12}:${arrTime[1]}`; 
-            }else {
-                return dataTime[0];
-            }
-        }else {
-            return dataTime[0]; 
-        }
-    }
+    // function convertToMilitaryTime(arrTime, dataTime) {
+    //     if(dataTime[1] == "pm") {
+    //         if(arrTime[0] < 12) {
+    //             return `${parseInt(arrTime[0])+12}:${arrTime[1]}`; 
+    //         }else {
+    //             return dataTime[0];
+    //         }
+    //     }else {
+    //         return dataTime[0]; 
+    //     }
+    // }
 
     $("#ts-form-submit").click(function() {
         console.log("submit!");
@@ -190,27 +194,18 @@ $(function() {
     
         sendSchedule.then(function(data) {
             console.log('complete submit');
-            //let resp = JSON.parse(data);
+            let resp = JSON.parse(data);
 
-            
-            console.log(data);
-
-            // if(resp.status){
-            //     //resp.response
-            //     console.log('Sent')
-            //     return
-            // }else {
-            //     //resp.response
-            //     console.log("Error");
-            // }
-
-            // if(resp.response.ErrorCode == 0){
-            //     console.log('complete submit');
-                
-            // }
-            // if(resp.response.ErrorCode > 0){
-            //     console.log("Error");
-            // }
+            if(resp.status){
+                //true
+                console.log(resp.response);
+                if(resp.response == "") {
+                    console.log("Tour Schedule Successfully!");
+                }
+            }else {
+                //false
+                console.log(resp.response);
+            }
         });
     }
     

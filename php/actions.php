@@ -15,11 +15,13 @@ switch ($data->action) {
         $timeslots = getTimeSlot($data);
         printResponse($timeslots);
         break;
-    case 'Book Appointment':
-        //Book Appointment
-        $bookappointment = postSchedule($data);
-        printResponse($bookappointment);
+    
+    case 'Post Schedule':
+        // Post Schedule
+        $schedule = postSchedule($data);
+        printResponse($schedule);
         break;
+
     default:
         # code...
         break;
