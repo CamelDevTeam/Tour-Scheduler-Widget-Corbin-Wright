@@ -26,6 +26,7 @@ function getTimeSlot($data){
   
   curl_close($curl);
 
+  //json decode
   $response = json_decode($resp);
 
   if($response->ErrorCode == 0){
