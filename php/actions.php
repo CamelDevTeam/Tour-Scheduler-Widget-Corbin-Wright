@@ -17,7 +17,7 @@ switch ($data->action) {
         break;
     case 'Book Appointment':
         //Book Appointment
-        $bookappointment = bookAppointment($data);
+        $bookappointment = postSchedule($data);
         printResponse($bookappointment);
         break;
     default:

@@ -31,17 +31,17 @@ function getTimeSlot($data){
   if($responseCode == 200 || $responseCode == 204){
       return ["status"=>true,"response"=>$response,"request"=>__FUNCTION__];
   }else{
-      return ["status"=>false,"response"=>$response->message,"request"=>__FUNCTION__];
+      return ["status"=>false,"response"=>$response->ErrorMessage,"request"=>__FUNCTION__];
   }
 
 }
 
-function bookAppointment($data){
+function postSchedule($data){
 
   $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => ''.APIEndpoint.'createleadwithappointment?MarketingAPIKey='.APIKey.'&CompanyCode='.$data->CompanyCode.'&PropertyId=978674&FirstName=Simran&LastName=Right&Email=simran.right@example.com&Phone=1234567896&ApptDate=05/13/2021&ApptTime=03:00PM&Source=Website&DesiredMoveinDate=05/13/2021&DesiredBedrooms=1&Message=needparking&RCCampaignId=12301&RCCampaignType=StandardCampaign&CTUserVisitId=3DIT8NXO7S0SRIPQ2EYCBI1719179193&To%20u%20c%20h%20Po%20i%20n%20t=Appointment',
+  CURLOPT_URL => ''.APIEndpoint.'createleadwithappointment?MarketingAPIKey='.APIKey.'&CompanyCode='.$data->CompanyCode.'&PropertyId='.$data->PropertyId.'&FirstName='.$data->FirstName.'&LastName='.$data->LastName.'&Email='.$data->Email.'&Phone='.$data->Phone.'&ApptDate=05/13/2021&ApptTime=03:00PM&Source='.$data->Source.'&DesiredMoveinDate=05/13/2021&DesiredBedrooms='.$data->DesiredBedrooms.'&Message='.$data->Message.'&RCCampaignId='.$data->RCCampaignId.'&RCCampaignType='.$data->RCCampaignType.'&CTUserVisitId='.$data->CTUserVisitId.'&To%20u%20c%20h%20Po%20i%20n%20t='.$data->TouchPoint,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
