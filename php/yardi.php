@@ -5,9 +5,8 @@ function getTimeSlot($data){
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-  CURLOPT_URL => ''.PIEndpoint.'AvailableSlots?MarketingAPIKey='.APIKey.'&CompanyCode=c00000110537&PropertyId='.$data->propertyID,
+  CURLOPT_URL => ''.APIEndpoint.'AvailableSlots?MarketingAPIKey='.APIKey.'&CompanyCode=c00000110537&PropertyId='.$data->propertyID,
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,
   CURLOPT_FOLLOWLOCATION => true,
